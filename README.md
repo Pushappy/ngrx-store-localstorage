@@ -2,10 +2,23 @@
 
 ![bundle size](https://img.shields.io/bundlephobia/minzip/ngrx-store-localstorage)
 ![npm weekly downloads](https://img.shields.io/npm/dw/ngrx-store-localstorage)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![CircleCI](https://circleci.com/gh/btroncone/ngrx-store-localstorage.svg?style=svg)](https://circleci.com/gh/btroncone/ngrx-store-localstorage)
 
 Simple syncing between ngrx store and local or session storage.
+Since the package is barely maintained, we forked this to make it work for feature reducers.
+
+Steps to upload new version to our gc npm registry from local build, we'll do this until further.
+
+Update version in `projects/lib/package.json`, then in root:
+```bash
+npm run build_dist
+
+cd dist/lib
+npm run ar-login
+npm pack
+npm publish
+```
 
 ## Dependencies
 
@@ -104,10 +117,10 @@ An interface defining the configuration attributes to bootstrap `localStorageSyn
 
 ```ts
 localStorageSync({
-  keys: ['todos', 'visibilityFilter'], 
-  storageKeySerializer: (key) => `cool_${key}`, 
+  keys: ['todos', 'visibilityFilter'],
+  storageKeySerializer: (key) => `cool_${key}`,
 });
-``` 
+```
 In above example `Storage` will use keys `cool_todos` and `cool_visibilityFilter` keys to store `todos` and `visibilityFilter` slices of state). The key itself is used by default - `(key) => key`.
 
 #### Target Depth Configuration
@@ -115,7 +128,7 @@ In above example `Storage` will use keys `cool_todos` and `cool_visibilityFilter
 ```ts
 localStorageSync({
   keys: [
-      { feature1: [{ slice11: ['slice11_1'], slice14: ['slice14_2'] }] }, 
+      { feature1: [{ slice11: ['slice11_1'], slice14: ['slice14_2'] }] },
       { feature2: ['slice21'] }
   ],
 });
