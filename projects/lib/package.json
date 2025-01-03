@@ -1,6 +1,6 @@
 {
-    "name": "ngrx-store-localstorage",
-    "version": "18.0.0",
+    "name": "@pushappy/ngrx-store-localstorage",
+    "version": "18.0.1",
     "description": "State and local storage syncing for @ngrx/store",
     "repository": {
         "type": "git",
@@ -27,5 +27,11 @@
     "dependencies": {
         "deepmerge": "^4.2.2",
         "tslib": "^2.3.0"
+    },
+    "scripts": {
+        "ar-login": "npx google-artifactregistry-auth"
+    },
+    "publishConfig": {
+        "registry": "https://europe-west1-npm.pkg.dev/pushappy-1285/npm-registry/"
     }
 }
